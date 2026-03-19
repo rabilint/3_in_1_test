@@ -5,6 +5,8 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager">
@@ -36,7 +38,7 @@
         </collectionProp>
       </HeaderManager>
       <hashTree/>
-      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults">
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
         <boolProp name="HTTPSampler.image_parser">true</boolProp>
         <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
         <intProp name="HTTPSampler.concurrentPool">6</intProp>
@@ -49,20 +51,20 @@
         <stringProp name="HTTPSampler.implementation"></stringProp>
       </ConfigTestElement>
       <hashTree/>
-      <DNSCacheManager guiclass="DNSCachePanel" testclass="DNSCacheManager" testname="DNS Cache Manager">
+      <DNSCacheManager guiclass="DNSCachePanel" testclass="DNSCacheManager" testname="DNS Cache Manager" enabled="true">
         <collectionProp name="DNSCacheManager.servers"/>
         <collectionProp name="DNSCacheManager.hosts"/>
         <boolProp name="DNSCacheManager.clearEachIteration">true</boolProp>
         <boolProp name="DNSCacheManager.isCustomResolver">false</boolProp>
       </DNSCacheManager>
       <hashTree/>
-      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager">
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
         <collectionProp name="CookieManager.cookies"/>
         <boolProp name="CookieManager.clearEachIteration">true</boolProp>
         <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
       </CookieManager>
       <hashTree/>
-      <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager">
+      <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
         <boolProp name="clearEachIteration">true</boolProp>
         <boolProp name="useExpires">false</boolProp>
         <boolProp name="CacheManager.controlledByThread">false</boolProp>
@@ -72,7 +74,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="VAR_THREADS" elementType="Argument">
             <stringProp name="Argument.name">VAR_THREADS</stringProp>
-            <stringProp name="Argument.value">${__P(threads, 5)}</stringProp>
+            <stringProp name="Argument.value">${__P(threads, 20)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="VAR_RAMPUP" elementType="Argument">
@@ -82,7 +84,7 @@
           </elementProp>
           <elementProp name="VAR_DURATION" elementType="Argument">
             <stringProp name="Argument.name">VAR_DURATION</stringProp>
-            <stringProp name="Argument.value">${__P(duration, 60)}</stringProp>
+            <stringProp name="Argument.value">${__P(duration, 600)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="VAR_BASE_URL" elementType="Argument">
@@ -486,7 +488,7 @@ vars.put(&quot;calc_trans_id&quot;, String.valueOf(System.currentTimeMillis()));
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="S01_Add_Product_to_Cart_And_Complete_Checkout">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="S01_Add_Product_to_Cart_And_Complete_Checkout" enabled="true">
         <stringProp name="ThreadGroup.num_threads">${VAR_THREADS}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${VAR_RAMPUP}</stringProp>
         <stringProp name="ThreadGroup.duration">${VAR_DURATION}</stringProp>
@@ -500,7 +502,7 @@ vars.put(&quot;calc_trans_id&quot;, String.valueOf(System.currentTimeMillis()));
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="S01_T01_Open_Home">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="S01_T01_Open_Home" enabled="true">
           <stringProp name="HTTPSampler.path">/</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
@@ -535,7 +537,7 @@ vars.put(&quot;calc_trans_id&quot;, String.valueOf(System.currentTimeMillis()));
           </JSR223PreProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="S01_T02_Open_Category_Tables">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="S01_T02_Open_Category_Tables" enabled="true">
           <stringProp name="HTTPSampler.path">tables</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
@@ -562,7 +564,7 @@ vars.put(&quot;calc_trans_id&quot;, String.valueOf(System.currentTimeMillis()));
           </UniformRandomTimer>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="S01_T03_Open_Random_Table">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="S01_T03_Open_Random_Table" enabled="true">
           <stringProp name="HTTPSampler.path">${random_table_product_url}</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
@@ -599,7 +601,7 @@ vars.put(&quot;calc_trans_id&quot;, String.valueOf(System.currentTimeMillis()));
           </UniformRandomTimer>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="S01_T04_Add_Table_To_Cart">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="S01_T04_Add_Table_To_Cart" enabled="true">
           <stringProp name="HTTPSampler.path">wp-admin/admin-ajax.php</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
@@ -649,7 +651,7 @@ vars.put(&quot;calc_trans_id&quot;, String.valueOf(System.currentTimeMillis()));
           </HeaderManager>
           <hashTree/>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="ThС - Chairs">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="ThС - Chairs" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -784,7 +786,7 @@ vars.put(&quot;calc_trans_id&quot;, String.valueOf(System.currentTimeMillis()));
             <hashTree/>
           </hashTree>
         </hashTree>
-        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="ThС - Checkout">
+        <ThroughputController guiclass="ThroughputControllerGui" testclass="ThroughputController" testname="ThС - Checkout" enabled="true">
           <intProp name="ThroughputController.style">1</intProp>
           <boolProp name="ThroughputController.perThread">false</boolProp>
           <intProp name="ThroughputController.maxThroughput">1</intProp>
@@ -817,7 +819,7 @@ vars.put(&quot;calc_trans_id&quot;, String.valueOf(System.currentTimeMillis()));
         </CSVDataSet>
         <hashTree/>
       </hashTree>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -854,7 +856,7 @@ vars.put(&quot;calc_trans_id&quot;, String.valueOf(System.currentTimeMillis()));
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -891,7 +893,7 @@ vars.put(&quot;calc_trans_id&quot;, String.valueOf(System.currentTimeMillis()));
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -928,7 +930,7 @@ vars.put(&quot;calc_trans_id&quot;, String.valueOf(System.currentTimeMillis()));
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener">
+      <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="true">
         <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments">
           <collectionProp name="Arguments.arguments">
             <elementProp name="influxdbMetricsSender" elementType="Argument">
