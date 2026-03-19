@@ -44,8 +44,8 @@ class PerfTestSimulations extends Simulation {
   */
 
   val stabilityModel: PopulationBuilder = StoreScenario.scnStore.inject(
-    rampConcurrentUsers(1).to(userCount).during(rampDuration.minutes),
-    constantConcurrentUsers(userCount).during(testDuration.minutes)
+    rampConcurrentUsers(1).to(userCount).during(rampDuration.seconds),
+    constantConcurrentUsers(userCount).during(testDuration.seconds)
   )
 
   setUp(
