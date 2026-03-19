@@ -37,6 +37,7 @@ class PerfTestSimulations extends Simulation {
   openModel
   ).protocols(httpProtocol)
     .assertions(assertions.AssertionsMap.assertionsMap(assertionType): _*);
+
  val capacityModel: PopulationBuilder = StoreScenario.scnStore.inject(
     rampConcurrentUsers(1).to(userCount).during(rampDuration.seconds)
   )
