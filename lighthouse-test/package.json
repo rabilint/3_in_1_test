@@ -5,7 +5,7 @@
     "test:flow": "node perfTest.js"
   },
   "devDependencies": {
-    "puppeteer": "^22.0.0",
-    "lighthouse": "^11.0.0"
+    "lighthouse": "^9.6.8",
+    "puppeteer": "^13.7.0"
   }
 }
