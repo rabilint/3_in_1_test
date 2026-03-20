@@ -168,10 +168,7 @@ async function captureReport() {
         await page.type(mailField, 'olex.koval@testmail.com');
 
 
-        await sleep(1000);
-
-        await page.$eval(submitBut, el => el.scrollIntoView());
-        await page.click(submitBut);
+        await page.$eval(submitBut, el => el.click());
         const thankYouSelector = 'h1.entry-title';
         await page.waitForSelector(thankYouSelector, { visible: true, timeout: 10000 });
 
